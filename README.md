@@ -1,6 +1,18 @@
+Bookmark Manager
+------
+Week 4 challenge at Makers Academy.
+
+We received the following specification:
+
+It shows a list of links from the database
+New links can be added
+Links can be tagged
+Links can be filtered by a tag
+
 We worked out the following user stories based on the spec we were given.
 
-```As a user
+```
+As a user
 So that I can go to web sites I regularly visit
 I would like to see a list of my saved links on the homepage
 
@@ -18,4 +30,5 @@ I would like to add tags to the links in my bookmark manager
 
 As a user
 So that I can quickly find links on a particular topic
-I would like to filter links by tag```
+I would like to filter links by tag
+```
