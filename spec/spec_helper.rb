@@ -1,6 +1,7 @@
 require 'capybara'
 require 'capybara/rspec'
 
+require './app/models/link'
 
 
 
