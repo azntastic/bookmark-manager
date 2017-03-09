@@ -4,7 +4,10 @@
 
 feature "Shows list of links" do
   scenario "User signs in, sees list of saved links" do
-    Link.create(url: 'http://www.makersacademy.com', title: 'Makers Academy')
+    link = Link.create(url: 'http://www.makersacademy.com', title: 'Makers Academy')
+    tag = Tag.create(tag_name: 'Coding')
+    link.tags << tag
+    link.save
     visit '/links'
     expect(page.status_code).to eq 200
     within 'ul#links' do

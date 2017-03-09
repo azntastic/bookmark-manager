@@ -9,6 +9,7 @@ feature "Save new link" do
     click_button 'Add Link'
     fill_in :title, with: 'Makers Academy'
     fill_in :url, with: ('http://www.makersacademy.com/')
+    fill_in :tag, with: ('Coding')
     click_button 'Save Link'
     expect(page).to have_content("Makers Academy")
   end
