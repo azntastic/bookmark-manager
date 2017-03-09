@@ -26,8 +26,12 @@ ENV["RACK_ENV"] ||= 'development'
     tag = Tag.create(tag_name: params[:tag])
     link.tags << tag
     link.save
-    p link.tags
     redirect '/links'
+  end
+
+  get '/tags/:tag' do
+    @matching_links = Link.all(Link.tags.tag_name => params['tag'])
+    erb :'links/tags'
   end
 
 end
