@@ -5,6 +5,8 @@ class BookmarkManager < Sinatra::Base
 
 ENV["RACK_ENV"] ||= 'development'
 
+DataMapper.setup(:default, ENV['DATABASE_URL'] || "postgres://localhost/bookmark_manager_#{ENV["RACK_ENV"]}")
+
   get '/' do
     'Hello World'
   end
