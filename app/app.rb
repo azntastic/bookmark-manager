@@ -1,24 +1,34 @@
 require 'sinatra/base'
 require_relative 'models/link'
 require_relative 'data_mapper_setup'
+require_relative 'models/user'
 
 class BookmarkManager < Sinatra::Base
 
 ENV["RACK_ENV"] ||= 'development'
 
+  enable :sessions
+
   data_mapper_config
 
   get '/' do
-    'Hello World'
+    erb :'links/homepage'
   end
 
   get '/links' do
     @links = Link.all
+    @user = User.create(email: session['email'], password: session['pass'])
     erb :'links/index'
   end
 
   get '/links/new' do
     erb :'links/new'
+  end
+
+  post '/sign_up' do
+    session['email'] = params[:Email]
+    session['pass'] = params[:Password]
+    redirect '/links'
   end
 
   post '/links' do
@@ -34,6 +44,10 @@ ENV["RACK_ENV"] ||= 'development'
   get '/tags/:tag' do
     @matching_links = Link.all(Link.tags.tag_name => params['tag'])
     erb :'links/tags'
+  end
+
+  get '/sign_up' do
+    erb :'sign_up/sign_up'
   end
 
 end
